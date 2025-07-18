@@ -14,11 +14,11 @@ datasource db {
 }
 
 model User {
-  id    String @id @default(uuid())
-  cpf   String @unique
-  name  String
-  email String @unique
-
+  id       String   @id @default(uuid())
+  cpf      String   @unique
+  name     String
+  email    String   @unique
+  password String
   createAt DateTime @default(now())
   updateAt DateTime @updatedAt
   books    Book[]
@@ -27,12 +27,14 @@ model User {
 }
 
 model Book {
-  id       String   @id @default(uuid())
-  title    String
-  createAt DateTime @default(now())
-  updateAt DateTime @updatedAt
-  User     User     @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)
-  userId   String
+  id              String   @id @default(uuid())
+  title           String
+  author          String
+  descriptionType String   @map("description_type")
+  createAt        DateTime @default(now())
+  updateAt        DateTime @updatedAt
+  User            User     @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  userId          String
 
   @@map("books")
 }

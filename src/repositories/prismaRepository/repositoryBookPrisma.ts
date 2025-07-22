@@ -1,12 +1,13 @@
-import { PrismaClient } from '@prisma/client';
+import { PrismaClient, } from '@prisma/client';
 
+import {prismaService} from '../../service/prisma';
 import { BookModel } from '../../core/book/model/Book';
 
 class BookRepositoryPrisma {
   private prisma: PrismaClient;
 
-  constructor() {
-    this.prisma = new PrismaClient();
+  constructor(prisma:PrismaClient) {
+    this.prisma = prisma;
   }
 
   async registerBook(book: Omit<BookModel, 'id'>) {
@@ -33,4 +34,4 @@ class BookRepositoryPrisma {
 
 }
 
-export default new BookRepositoryPrisma();
+export default new BookRepositoryPrisma(prismaService);

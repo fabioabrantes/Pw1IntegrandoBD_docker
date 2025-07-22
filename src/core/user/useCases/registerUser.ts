@@ -1,25 +1,23 @@
-import repositoryUserPrisma from "../../../database/repositories/repositoryUserPrisma";
-import { UserModel } from '../model/User';
-
-import { AppErrosCustom } from "../../../errors/AppCustomError";
+import repositoryUserPrisma from "../../../repositories/prismaRepository/repositoryUserPrisma";
+import { UserModel } from "../entity/User";
 
 type MessageResponseSuccess = {
   body: UserModel;
   status: number;
-}
+};
 
 type MessageResponseError = {
   body: string;
   status: number;
-}
+};
 
 class RegisterUserUseCase {
-
-  async execute(user: Omit<UserModel, 'id'>): Promise<MessageResponseSuccess | MessageResponseError> {
-
+  async execute(
+    user: Omit<UserModel, "id">
+  ): Promise<MessageResponseSuccess | MessageResponseError> {
     let userExist = await repositoryUserPrisma.findByCpf(user.cpf);
     if (userExist !== null) {
-      throw new AppErrosCustom("Cliente já existe no banco.", 400);
+      return { body: "Cliente já existe no banco", status: 400 };
     }
 
     const userBD = await repositoryUserPrisma.registerUser(user);

@@ -1,6 +1,6 @@
 import { PrismaClient } from "@prisma/client";
 
-import { UserModel } from "../../core/user/model/User";
+import { UserModel } from "../../core/user/entity/User";
 import { prismaService } from "../../service/prisma";
 
 class UserRepositoryPrisma {

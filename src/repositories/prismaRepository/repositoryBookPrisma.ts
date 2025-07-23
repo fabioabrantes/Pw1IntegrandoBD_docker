@@ -1,7 +1,7 @@
 import { PrismaClient, } from '@prisma/client';
 
 import {prismaService} from '../../service/prisma';
-import { BookModel } from '../../core/book/model/Book';
+import { BookModel } from '../../core/book/entity/Book';
 
 class BookRepositoryPrisma {
   private prisma: PrismaClient;

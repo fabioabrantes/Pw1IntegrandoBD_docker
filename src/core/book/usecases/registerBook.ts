@@ -14,6 +14,9 @@ type MessageResponseError = {
 };
 
 class RegisterBookUseCase {
+  async registrarlivro(){
+
+  }
   async execute(
     book: Omit<BookModel, "id">
   ): Promise<MessageResponseSuccess | MessageResponseError> {

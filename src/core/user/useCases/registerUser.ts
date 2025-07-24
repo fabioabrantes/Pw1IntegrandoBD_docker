@@ -15,7 +15,11 @@ class RegisterUserUseCase {
   async execute(
     user: Omit<UserModel, "id">
   ): Promise<MessageResponseSuccess | MessageResponseError> {
+    console.log("user=============>", user);
+   
+   
     let userExist = await repositoryUserPrisma.findByCpf(user.cpf);
+    console.log("user=============>", userExist);
     if (userExist !== null) {
       return { body: "Cliente já existe no banco", status: 400 };
     }

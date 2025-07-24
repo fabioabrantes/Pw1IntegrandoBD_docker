@@ -26,7 +26,7 @@ class RegisterBookController {
     };
 
     const result = await RegisterBookUseCase.execute(book);
-
+  
     res.status(result.status).json(result.body);
   }
 }

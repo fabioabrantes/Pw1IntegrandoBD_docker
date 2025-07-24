@@ -12,7 +12,7 @@ type Params = {
 class RegisterUserController {
   async handle(req: Request, res: Response) {
     const { cpf, name, email, password } = req.body as Params;
-
+    console.log(cpf)
     // validar os campos cpf, name e email usando a lib zod
 
     let passwordCRiptografado = await hash(password, 4);

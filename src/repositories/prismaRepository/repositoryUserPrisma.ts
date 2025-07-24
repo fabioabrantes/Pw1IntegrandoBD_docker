@@ -28,7 +28,7 @@ class UserRepositoryPrisma {
     });
   }
   async findById(id: string) {
-    return await this.prisma.user.findUnique({
+    return await this.prisma.user.findFirst({
       where: {
         id,
       },

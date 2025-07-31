@@ -14,7 +14,7 @@ type Params = {
 class RegisterBookController {
   async handle(req: Request, res: Response) {
     const { author, title, descriptionType } = req.body as ParamsBody;
-    const { id } = req.params as Params;
+    const id  = req.userId;
 
     // validar os campos cpf, name e email usando a lib zod
 

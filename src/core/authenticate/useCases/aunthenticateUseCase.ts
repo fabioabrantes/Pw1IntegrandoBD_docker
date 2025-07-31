@@ -39,7 +39,7 @@ class Authenticate {
         status: 400,
       };
     }
-    const token = sign({ sub: userExist.id }, process.env.TOKEN_KEY as string, {
+    const token = sign({ sub: userExist.id }, process.env.TOKEN_KEY!, {
       expiresIn: "1d",
     });
 
